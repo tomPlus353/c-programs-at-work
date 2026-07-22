@@ -86,7 +86,7 @@ int main() {
         char command[100];
         char description[100];
         // Get the user command
-        printf("Enter command (add, remove, edit, read, quit): ");
+        printf("Enter command (add,  read, edit, remove, quit): ");
         scanf("%s", command);
         // Handle add command
         if (strcmp(command, "add") == 0) {
@@ -94,11 +94,9 @@ int main() {
             scanf("%s", description);
             head = addTask(head, description);
         }
-        // Handle remove command
-        else if (strcmp(command, "remove") == 0) {
-            printf("Enter task description to remove: ");
-            scanf("%s", description);
-            head = removeTask(head, description);
+        // Handle read command
+        else if (strcmp(command, "read") == 0) {
+            readTasks(head);
         }
         // Handle edit command
         else if (strcmp(command, "edit") == 0) {
@@ -109,9 +107,11 @@ int main() {
             scanf("%s", description);
             head = editTask(head, oldDescription, description);
         }
-        // Handle read command
-        else if (strcmp(command, "read") == 0) {
-            readTasks(head);
+        // Handle remove command
+        else if (strcmp(command, "remove") == 0) {
+            printf("Enter task description to remove: ");
+            scanf("%s", description);
+            head = removeTask(head, description);
         }
         // Handle quit command
         else if (strcmp(command, "quit") == 0) {
